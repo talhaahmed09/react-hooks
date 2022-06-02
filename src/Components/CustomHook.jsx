@@ -21,7 +21,7 @@ export const useFetch = (url) => {
                 setState({ data: y, loading: false });
             }
    
-        }, 2000);
+        }, 100);
       });
   }, [url, setState]);
 

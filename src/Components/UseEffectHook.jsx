@@ -1,10 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useFetch } from "./CustomHook";
-
+import { UseLayoutEffectHook } from "./UseLayoutEffectHook";
 const UseEffectHook = () => {
     const [count, setCount] = useState(0);
     const {data, loading} = useFetch(`http://numbersapi.com/${count}/trivia`);
-    let display = '';
 
     useEffect(() => {
         console.log('loading')
@@ -12,19 +11,30 @@ const UseEffectHook = () => {
 
     useEffect(() => {
         const onMouseMove = (e) => {
-            display = 'Mouse Moving'
-            console.log(display,'yes')
+            
+            console.log('Mouse moving?','yes')
         }
         window.addEventListener("mousemove",onMouseMove);
 
         return () => {window.removeEventListener("mousemove",onMouseMove); console.log('unmount')}
-    },[])
+    },[]);
+
+    const divRef = useRef();
+
+    const rect = UseLayoutEffectHook(divRef,[data])
 
     return (
         <div>
-            {!data? 'loading...' : data}
+            <div style={{display: 'flex', justifyContent:'center', marginBottom:'10px'}}>
+            <div ref={divRef}> {!data? 'loading...' : data} </div>
+            </div>
             <button onClick={() => setCount(c => c + 1)}>increament</button>
+
+            <pre>{JSON.stringify(rect,null,2)}</pre>
+           
         </div>
+
+        
     )
 }
 
