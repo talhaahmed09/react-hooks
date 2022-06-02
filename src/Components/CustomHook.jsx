@@ -21,9 +21,15 @@ export const useFetch = (url) => {
                 setState({ data: y, loading: false });
             }
    
-        }, 100);
+        }, 0);
       });
   }, [url, setState]);
 
   return state;
 };
+
+export const useCountRenders = () => {
+  const renders = useRef(0);
+
+  console.log('renders:', renders.current++);
+}

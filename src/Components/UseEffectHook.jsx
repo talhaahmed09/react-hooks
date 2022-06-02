@@ -10,13 +10,14 @@ const UseEffectHook = () => {
     },[data]);
 
     useEffect(() => {
-        const onMouseMove = (e) => {
+        // const onMouseMove = (e) => {
             
-            console.log('Mouse moving?','yes')
-        }
-        window.addEventListener("mousemove",onMouseMove);
+       
+        // }
+        console.log('Mouse moving?','yes')
+        // window.addEventListener("mousemove",onMouseMove);
 
-        return () => {window.removeEventListener("mousemove",onMouseMove); console.log('unmount')}
+        // return () => {window.removeEventListener("mousemove",onMouseMove); console.log('unmount')}
     },[]);
 
     const divRef = useRef();
@@ -29,6 +30,8 @@ const UseEffectHook = () => {
             <div ref={divRef}> {!data? 'loading...' : data} </div>
             </div>
             <button onClick={() => setCount(c => c + 1)}>increament</button>
+
+            <h1>Use Layout Effect</h1>
 
             <pre>{JSON.stringify(rect,null,2)}</pre>
            
