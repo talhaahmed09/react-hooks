@@ -5,10 +5,13 @@ import UseRefHook from './Components/UseRefHook';
 import UseCallbackHook from './Components/UseCallbackHook';
 import UseMemoHook from './Components/UseMemoHook';
 import UseReducerHook from './Components/UseReducerHook';
+import UseContextHook from './Components/UseContextHook';
 
 function App() {
   return (
     <div className="App">
+      <h1>Use Context</h1>
+      <UseContextHook/>
       <h1>Use State</h1>
       <UseStateHook/>
       <h1>Use Effect</h1>
